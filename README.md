@@ -82,4 +82,4 @@ namespace program
  ![output](ss1.png)
 
  ## Result:
- Thus the C# program to calculate the salary of an employee by passing the name, designation, noofexperience, basic salary and insurance amount through constructor is executed successfully.
+ Thus the C# program to calculate the salary of an employee by passing the name, designation, noofexperience, basic salary and insurance amount through constructor is executed successfully. 
