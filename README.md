@@ -19,52 +19,64 @@
 
  ## Program:
  ```c#
- using System;
-
-class Employee
+using System;
+namespace program
 {
-    string name;
-    string designation;
-    int noOfExperience;
-    double basicSalary;
-    double insuranceAmount;
-
-    public Employee(string name, string designation, int noOfExperience, double basicSalary, double insuranceAmount)
+    public class employee
     {
-        this.name = name;
-        this.designation = designation;
-        this.noOfExperience = noOfExperience;
-        this.basicSalary = basicSalary;
-        this.insuranceAmount = insuranceAmount;
+        public string name, designation;
+        public int exp, bs, ins, hra = 0, ta = 0, s = 0;
+        void salary(int bs, int ins)
+        {
+            hra = (20 * bs) / 100;
+            ta = (10 * bs) / 100;
+            s = bs + hra + ta - ins;
+        }
+        void display()
+        {
+            Console.WriteLine("Name of the employee is " + this.name + " having " + this.exp + " of experience, working as " + this.designation);
+            Console.WriteLine("Receives " + s + " of salary");
+        }
+        public employee(string name, string designation, int exp, int bs, int ins)
+        {
+            this.name = name;
+            this.designation = designation;
+            this.exp = exp;
+            this.bs = bs;
+            this.ins = ins;
+            salary(bs, ins);
+            display();
+        }
+
     }
-
-    public void salary()
+    public class program
     {
-        double hra = 0.2 * basicSalary;
-        double ta = 0.1 * basicSalary;
-        double grossSalary = basicSalary + hra + ta - insuranceAmount;
-        Console.WriteLine("Gross salary of {0}: {1}", name, grossSalary);
-    }
+        static void Main(String[] args)
+        {
+            string nam, desig;
+            int exp, bs, ins, n;
+            Console.WriteLine("Enter no of employees: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine("Enter name of the employee: ");
+                nam = Console.ReadLine();
+                Console.WriteLine("Enter designation of the employee: ");
+                desig = Console.ReadLine();
+                Console.WriteLine("Enter years of experience of the employee: ");
+                exp = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter basic salary of the employee: ");
+                bs = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter insurance amount: ");
+                ins = Convert.ToInt32(Console.ReadLine());
+                employee emp = new employee(nam, desig, exp, bs, ins);
+            }
 
-    public void display()
-    {
-        Console.WriteLine("Name: {0}", name);
-        Console.WriteLine("Designation: {0}", designation);
-        Console.WriteLine("No. of years of experience: {0}", noOfExperience);
-        Console.WriteLine("Basic salary: {0}", basicSalary);
-        Console.WriteLine("Insurance amount: {0}", insuranceAmount);
-        salary();
+
+        }
     }
 }
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Employee emp = new Employee("Zeus", "Director", 25, 7000000, 300000);
-        emp.display();
-    }
-}
 ```
  ## Output:
  ![output](ss1.png)
